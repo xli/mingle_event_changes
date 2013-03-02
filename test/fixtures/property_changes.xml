@@ -1,0 +1,32 @@
+<changes xmlns="http://www.thoughtworks-studios.com/ns/mingle">
+  <change type="property-change">
+    <property_definition url="https://mingle.mingle.thoughtworks.com/api/v2/projects/mingle_saas/property_definitions/10260.xml">
+      <name>Iteration</name>
+      <position type="integer">1</position>
+      <data_type>card</data_type>
+      <is_numeric type="boolean">false</is_numeric>
+    </property_definition>
+    <old_value nil="true"></old_value>
+    <new_value>
+      <card url="https://mingle.mingle.thoughtworks.com/api/v2/projects/mingle_saas/cards/406.xml">
+        <number type="integer">406</number>
+      </card>
+    </new_value>
+  </change>
+
+  <change type="property-change">
+    <property_definition url="https://mingle.mingle.thoughtworks.com/api/v2/projects/sanity/property_definitions/17486.xml">
+      <name>Owner</name>
+      <position nil="true"></position>
+      <data_type>user</data_type>
+      <is_numeric type="boolean">false</is_numeric>
+    </property_definition>
+    <old_value nil="true"></old_value>
+    <new_value>
+      <user url="https://mingle.mingle.thoughtworks.com/api/v2/users/10014.xml">
+        <name>Tom</name>
+        <login>tom</login>
+      </user>
+    </new_value>
+  </change>
+</changes>

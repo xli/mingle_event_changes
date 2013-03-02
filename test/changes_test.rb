@@ -1,23 +1,18 @@
-
-$LOAD_PATH << File.join(File.dirname(__FILE__), '..', 'lib')
-require "test/unit"
-require "mingle_event_changes"
+require File.dirname(__FILE__) + "/test_helper"
 
 class ChangesTest < Test::Unit::TestCase
   def setup
-    @changes = MingleEventChanges.parse(changes_xml).sort_by(&:type)
+    @changes = MingleEventChanges.parse(fixtures('changes.xml'))
   end
 
   def test_parse_copy_from
     copy_from = @changes.find(&type('card-copied-from'))
-    assert_equal 'card-copied-from', copy_from.type
     assert_equal 'http://your.mingle.server:8080/api/v2/projects/one/cards/2.xml', copy_from.source_url
     assert_equal 'http://your.mingle.server:8080/api/v2/projects/two/cards/3.xml', copy_from.destination_url
   end
 
   def test_parse_coped_to
     coped_to = @changes.find(&type('card-copied-to'))
-    assert_equal 'card-copied-to', coped_to.type
     assert_equal 'http://your.mingle.server:8080/api/v2/projects/one/cards/2.xml', coped_to.source_url
     assert_equal 'http://your.mingle.server:8080/api/v2/projects/two/cards/3.xml', coped_to.destination_url
   end
@@ -110,7 +105,4 @@ class ChangesTest < Test::Unit::TestCase
     lambda {|c| c.type == name}
   end
 
-  def changes_xml
-    File.read(File.dirname(__FILE__) + '/changes.xml')
-  end
 end

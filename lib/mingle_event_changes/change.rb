@@ -15,7 +15,28 @@ module MingleEventChanges
   class CardTypeValue
     include SAXMachine
     element :name
-    element :card_type, :value => :url, :as => :url
+    attribute :url
+  end
+
+  class CardValue
+    include SAXMachine
+    element :number
+    attribute :url
+  end
+
+  class UserValue
+    include SAXMachine
+    element :name
+    element :login
+    attribute :url
+  end
+
+  class Value
+    include SAXMachine
+    element :card_type, :class => CardTypeValue
+    element :user, :class => UserValue
+    element :card, :class => CardValue
+    value :text
   end
 
   class Change
@@ -35,13 +56,43 @@ module MingleEventChanges
 
   class PropertyChange < Change
     element :property_definition, :class => PropertyDefinition
-    element :old_value
-    element :new_value
+
+    element :old_value, :as => :old_value_subject, :class => Value
+    element :new_value, :as => :new_value_subject, :class => Value
+
+    def old_value
+      value(old_value_subject)
+    end
+
+    def new_value
+      value(new_value_subject)
+    end
+
+    def value(subject)
+      case property_definition.data_type
+      when 'user'
+        subject.user
+      when 'card'
+        subject.card
+      else
+        if r = subject.text
+          r.empty? ? nil : r
+        end
+      end
+    end
   end
 
   class CardTypeChange < Change
-    element :old_value, :class => CardTypeValue
-    element :new_value, :class => CardTypeValue
+    element :old_value, :as => :old_value_subject, :class => Value
+    element :new_value, :as => :new_value_subject, :class => Value
+
+    def old_value
+      old_value_subject.card_type
+    end
+
+    def new_value
+      new_value_subject.card_type
+    end
   end
 
   class TagChange < Change
