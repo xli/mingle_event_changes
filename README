@@ -1,0 +1,4 @@
+
+= Mingle Event Changes
+
+Parse out Mingle Event Feed content element of the entry. Better and simpler API for accessing event changes.

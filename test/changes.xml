@@ -1,0 +1,75 @@
+<changes>
+  <change type="card-creation" >
+  </change>
+  <change type="card-copied-to" >
+    <source url="http://your.mingle.server:8080/api/v2/projects/one/cards/2.xml"/>
+    <destination url="http://your.mingle.server:8080/api/v2/projects/two/cards/3.xml"></destination>
+  </change>
+  <change type="card-copied-from" >
+    <source url="http://your.mingle.server:8080/api/v2/projects/one/cards/2.xml"/>
+    <destination url="http://your.mingle.server:8080/api/v2/projects/two/cards/3.xml"></destination>
+  </change>
+  <change type="card-deletion">
+  </change>
+  <change type="name-change">
+    <old_value>Old name</old_value>
+    <new_value>New name</new_value>
+  </change>
+  <change type="description-change">
+  </change>
+  <change type="property-change">
+    <property_definition 
+      url="http://your_mingle_server.com/api/v2/projects/your_project/property_definitions/10418.xml">
+      <name>Priority</name>
+      <position nil="true"></position>
+      <data_type>string</data_type>
+      <is_numeric type="boolean">false</is_numeric>
+    </property_definition>
+    <old_value nil="true"></old_value>
+    <new_value>must</new_value>
+  </change>
+  <change type="card-type-change">
+    <old_value>
+      <card_type url="http://your_mingle_server.com/api/v2/projects/your_project/card_types/123.xml">
+        <name>Story</name>
+      </card_type>
+    </old_value>
+    <new_value>
+      <card_type url="http://your_mingle_server.com/api/v2/projects/your_project/card_types/432.xml">
+        <name>Iteration</name>
+      </card_type>
+    </new_value>
+  </change>
+  <change type="tag-addition">
+    <tag>Client X</tag>
+  </change>
+  <change type="tag-removal">
+    <tag>Needs review</tag>
+  </change>
+  <change type="attachment-addition">
+    <attachment>
+      <url>/attachments/b4a16f3dcbebe1cc631f8c5a08f78394/811/notes.txt</url>
+      <file_name>notes.txt</file_name>
+    </attachment>
+  </change>
+  <change type="attachment-removal">
+    <attachment>
+      <url>/attachments/b4a16f3dcbebe1cc631f8c5a08f78394/811/notes.txt</url>
+      <file_name>notes.txt</file_name>
+    </attachment>
+  </change>
+  <change type="attachment-replacement">
+    <attachment>
+      <url>/attachments/b4a16f3dcbebe1cc631f8c5a08f78394/811/notes.txt</url>
+      <file_name>notes.txt</file_name>
+    </attachment>
+  </change>
+  <change type="comment-addition">
+    <comment>Attached discussion from sales engineers.</comment>
+  </change>
+  <change type="system-comment-addition">
+    <comment> next release changed from release + 1 to release + 8 </comment>
+  </change>
+
+  <change type="page-creation" />
+</changes>
