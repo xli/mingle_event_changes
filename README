@@ -2,3 +2,19 @@
 = Mingle Event Changes
 
 Parse out Mingle Event Feed content element of the entry. Better and simpler API for accessing event changes.
+
+== How to use
+
+  require 'mingle_event_changes'
+
+  xml = <<-XML
+  <changes>
+    <change type="card-creation" >
+    </change>
+    <change type="card-copied-to" >
+      <source url="http://your.mingle.server:8080/api/v2/projects/one/cards/2.xml"/>
+      <destination url="http://your.mingle.server:8080/api/v2/projects/two/cards/3.xml"></destination>
+    </change>
+  </changes>
+  XML
+  changes = MingleEventChanges.parse(xml)

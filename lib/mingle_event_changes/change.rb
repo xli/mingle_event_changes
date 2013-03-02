@@ -20,11 +20,7 @@ module MingleEventChanges
 
   class Change
     include SAXMachine
-
     attribute :type
-  end
-
-  class CardCreationChange < Change
   end
 
   class CardCopyChange < Change
