@@ -41,7 +41,26 @@ module MingleEventChanges
 
   class Change
     include SAXMachine
-    attribute :type
+    element :change, :value => :type, :as => :type
+
+    # return a string description of the change
+    # return nil for non-content change type, e.g. card-creation
+    def desc
+    end
+
+    protected
+    def display_value(value)
+      case value
+      when UserValue
+        value.name
+      when CardValue
+        "##{value.number}"
+      when CardTypeValue
+        value.name
+      else
+        value
+      end || '(not set)'
+    end
   end
 
   class CardCopyChange < Change
@@ -52,6 +71,14 @@ module MingleEventChanges
   class NameChange < Change
     element :old_value
     element :new_value
+
+    def desc
+      if old_value
+        "Name: \n  from: #{old_value}\n  to: #{new_value}"
+      else
+        "Name: #{new_value}"
+      end
+    end
   end
 
   class PropertyChange < Change
@@ -68,6 +95,11 @@ module MingleEventChanges
       value(new_value_subject)
     end
 
+    def desc
+      "#{property_definition.name}: #{display_value(old_value)} => #{display_value(new_value)}"
+    end
+
+    private
     def value(subject)
       case property_definition.data_type
       when 'user'
@@ -93,19 +125,34 @@ module MingleEventChanges
     def new_value
       new_value_subject.card_type
     end
+
+    def desc
+      "Type: #{display_value(old_value)} => #{display_value(new_value)}"
+    end
   end
 
   class TagChange < Change
     element :tag
+
+    def desc
+      "#{self.type}: #{tag}"
+    end
   end
 
   class AttachmentChange < Change
     element :url
     element :file_name
+    def desc
+      "#{self.type}: #{file_name}"
+    end
   end
 
   class CommentChange < Change
     element :comment
+
+    def desc
+      comment
+    end
   end
 
   class Changes
