@@ -33,10 +33,15 @@ module MingleEventChanges
 
   class Value
     include SAXMachine
-    element :card_type, :class => CardTypeValue
+    element :card_type, :as => :existing_card_type, :class => CardTypeValue
     element :user, :class => UserValue
     element :card, :class => CardValue
+    element :deleted_card_type, :class => CardTypeValue
     value :text
+
+    def card_type
+      existing_card_type || deleted_card_type
+    end
   end
 
   class Change

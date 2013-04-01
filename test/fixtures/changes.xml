@@ -70,6 +70,15 @@
   <change type="system-comment-addition">
     <comment> next release changed from release + 1 to release + 8 </comment>
   </change>
-
   <change type="page-creation" />
+  <change type="card-type-change">
+    <old_value>
+      <card_type nil="true"/>
+    </old_value>
+    <new_value>
+      <deleted_card_type>
+        <name>Iteration</name>
+      </deleted_card_type>
+    </new_value>
+  </change>
 </changes>

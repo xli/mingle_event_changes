@@ -101,6 +101,12 @@ class ChangesTest < Test::Unit::TestCase
     assert_equal MingleEventChanges::Change, change.class
   end
 
+  def test_parse_deleted_card_type_change
+    change = @changes.select(&type('card-type-change')).last
+    assert_equal nil, change.old_value.name
+    assert_equal 'Iteration', change.new_value.name
+  end
+
   def type(name)
     lambda {|c| c.type == name}
   end
