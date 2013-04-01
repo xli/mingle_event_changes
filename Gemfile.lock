@@ -1,13 +1,14 @@
 PATH
   remote: .
   specs:
-    mingle_event_changes (0.0.1)
+    mingle_event_changes (0.0.3)
       sax-machine
 
 GEM
   remote: https://rubygems.org/
   specs:
-    nokogiri (1.5.6)
+    nokogiri (1.5.9)
+    rake (10.0.3)
     sax-machine (0.1.0)
       nokogiri (> 0.0.0)
 
@@ -16,3 +17,4 @@ PLATFORMS
 
 DEPENDENCIES
   mingle_event_changes!
+  rake
